@@ -17,6 +17,9 @@ struct CustomHexdump
 template <unsigned RowSize, bool ShowAscii>
 std::ostream& operator<<(std::ostream& out, const CustomHexdump<RowSize, ShowAscii>& dump)
 {
+    std::ios oldState(nullptr);
+    oldState.copyfmt(out);
+
     out.fill('0');
     for (int i = 0; i < dump.mLength; i += RowSize)
     {
@@ -53,9 +56,17 @@ std::ostream& operator<<(std::ostream& out, const CustomHexdump<RowSize, ShowAsc
         }
         out << std::endl;
     }
+
+    out.copyfmt(oldState);
     return out;
 }
 
 typedef CustomHexdump<16, true> Hexdump;
+
+    // std::cout << Hexdump(data, sizeof(data)) << std::endl;
+    // std::cout << CustomHexdump<8, true>(data, sizeof(data)) << std::endl;
+    // std::cout << CustomHexdump<32, false>(data, sizeof(data)) << std::endl;
+
+
 
 #endif // HEXDUMP_HPP

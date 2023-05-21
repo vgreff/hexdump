@@ -11,8 +11,13 @@ int main()
         val = c++;
     }
 
+
+
+    std::cout << 15 << std::endl;
+    
     std::cout << Hexdump(data, sizeof(data)) << std::endl;
     std::cout << CustomHexdump<8, true>(data, sizeof(data)) << std::endl;
     std::cout << CustomHexdump<32, false>(data, sizeof(data)) << std::endl;
 
+    std::cout << 15 << std::endl;
 }
