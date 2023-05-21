@@ -61,8 +61,9 @@ std::ostream& operator<<(std::ostream& out, const CustomHexdump<RowSize, ShowAsc
     return out;
 }
 
-typedef CustomHexdump<16, true> Hexdump;
+using Hexdump = CustomHexdump<16, true> ;
 
+    // Usage examples
     // std::cout << Hexdump(data, sizeof(data)) << std::endl;
     // std::cout << CustomHexdump<8, true>(data, sizeof(data)) << std::endl;
     // std::cout << CustomHexdump<32, false>(data, sizeof(data)) << std::endl;
